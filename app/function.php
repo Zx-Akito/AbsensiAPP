@@ -18,7 +18,7 @@
                 //Jika passwordnya benar
                 //Maka akan redirect ke halaman home
                 $_SESSION['username'] = $username;
-                header("location:index.php");
+                header("location:index.php?page=beranda&p=true");
             } else {
                 //Jika passwordnya salah
                 echo '
