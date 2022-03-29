@@ -4,28 +4,21 @@
         <li class='nav__item $active1'>
             <a href='pengguna.html' class='nav__link'>
                 <i class='bx bx-user nav__icon'></i>
-                <span class='nav__name'>Pengguna</span>
+                <span class='nav__name'>Siswa</span>
             </a>
         </li>
 
         <li class='nav__item $active2'>
             <a href='#skills' class='nav__link'>
-                <i class='bx bx-book-alt nav__icon'></i>
-                <span class='nav__name'>Anime</span>
+                <i class='bx bx-spreadsheet nav__icon'></i>
+                <span class='nav__name'>Kelas</span>
             </a>
         </li>
 
         <li class='nav__item $active3'>
             <a href='#portfolio' class='nav__link'>
-                <i class='bx bx-briefcase-alt nav__icon'></i>
-                <span class='nav__name'>Musik</span>
-            </a>
-        </li>
-
-        <li class='nav__item $active4'>
-            <a href='#contactme' class='nav__link'>
-                <i class='bx bx-message-square-detail nav__icon'></i>
-                <span class='nav__name'>Kontak</span>
+                <i class='bx bx-bar-chart nav__icon'></i>
+                <span class='nav__name'>Laporan</span>
             </a>
         </li>
     
