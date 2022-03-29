@@ -9763,6 +9763,9 @@ a.text-dark:hover {
 .btn-blue {
   background-color: #007bff;
 }
+.text-blue {
+  color: #007bff;
+}
 .text-break {
   word-break: break-word !important;
   overflow-wrap: break-word !important;
