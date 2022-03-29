@@ -1,5 +1,11 @@
 <?php
-
+     $p=$_GET['p'];
+     switch($p)
+     {
+         case "true":
+            $alert=Alert("success","Selamat Datang");
+         break;
+     }
     $template = "dashboard";
     $title = "Beranda";
     $konten = "
