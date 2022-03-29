@@ -15,7 +15,7 @@
         <h4 class='section__name text-capitalize'>{$_SESSION['username']}</h4>
     </section>
 
-        <section class='container animate__animated animate__fadeInLeft' id='home'>
+        <section class='container animate__animated animate__fadeInRight' id='home'>
             <div class='row d-flex justify-content-end'>
                 <!-- nama sekolah-->
                 <div class='col-xl-3 col-md-4'>
