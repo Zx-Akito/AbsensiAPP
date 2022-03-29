@@ -2,8 +2,7 @@
     $template = "dashboard";
     $judul    = "Bye bye";
 
-    $_SESSION['JenisLog']="";
-    $_SESSION['id']="";
+    $_SESSION['username']="";
     header("location:index.php");
 
 ?>

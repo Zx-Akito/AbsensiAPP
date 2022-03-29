@@ -1,8 +1,15 @@
 <?php
 
     $template = "dashboard";
+    $title = "Beranda";
     $konten = "
-        <section class='container section animate__animated animate__fadeInLeft' id='home'>
+
+    <section class='container section animate__animated animate__fadeInLeft' id='home'>
+        <h2 class='section__title'>Selamat Datang</h2>
+        <h4 class='section__name text-capitalize'>{$_SESSION['username']}</h4>
+    </section>
+
+        <section class='container animate__animated animate__fadeInLeft' id='home'>
             <div class='row d-flex justify-content-end'>
                 <!-- nama sekolah-->
                 <div class='col-xl-3 col-md-4'>
@@ -15,8 +22,8 @@
                                     <div class='h6 mb-0 font-weight-bold text-gray-800'>SMK PASUNDAN SUBANG</div>
                                 </div>
                                 <div class='col-auto'>
-                                    <a class='btn btn-blue'>
-                                    <i class='bx bx-building-house bx-md bx-tada' style='color:#ffffff'></i>
+                                    <a href='http://smkpasundansubang.sch.id/' class='btn btn-blue'>
+                                    <i class='bx bx-building-house bx-md bx-tada-hover' style='color:#ffffff'></i>
                                     </a>
                                 </div>
                             </div>
@@ -37,7 +44,7 @@
                                 </div>
                                 <div class='col-auto'>
                                     <a class='btn btn-warning'>
-                                    <i class='bx bx-bar-chart-alt-2 bx-md bx-tada' style='color:#ffffff'></i>
+                                    <i class='bx bx-bar-chart-alt-2 bx-md bx-tada-hover' style='color:#ffffff'></i>
                                     </a>
                                 </div>
                             </div>
@@ -58,7 +65,7 @@
                                 </div>
                                 <div class='col-auto'>
                                     <a class='btn btn-primary'>
-                                    <i class='fas fa-users fa-2x bx-tada' style='color:#ffffff'></i>
+                                    <i class='fas fa-users fa-2x bx-tada-hover' style='color:#ffffff'></i>
                                     </a>
                                 </div>
                             </div>
@@ -67,13 +74,6 @@
                 </div>
             </div>
         </section>
-        <section class='container section animate__animated animate__fadeInLeft' id='home'>
-            <img src='assets/img/a.gif' alt='' style='width:20%;'>
-            <h2 class='section__title'>Selamat Datang</h2>
-            <h4 class='section__name'>".Pengguna($_SESSION['id'])['nama']."</h4>
-        </section>
-        
-
         
     ";
 

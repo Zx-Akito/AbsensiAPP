@@ -1,15 +1,16 @@
 <?php
 
-    switch($_SESSION['JenisLog'])
-    {
-        case "admin":
-            include("./template/navbar/navbar_admin.php");
-        break;
-        case "user":
-            include("./template/navbar/navbar_user.php");
-        break;
-    }
+    // switch($_SESSION['JenisLog'])
+    // {
+    //     case "admin":
+    //         include("./template/navbar/navbar_admin.php");
+    //     break;
+    //     case "user":
+    //         include("./template/navbar/navbar_user.php");
+    //     break;
+    // }
 
+    include("navbar/navbar_admin.php");
     $navbar = "
     <ul class='nav__list mt-3'>
         <li class='nav__item'>

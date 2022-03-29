@@ -16,7 +16,7 @@
             <link rel='stylesheet' href='assets/css/bootstrap.min.css?'>
             <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css'/>
             
-            <title>AnimeHub</title>
+            <title>$title</title>
         </head>
             <body>
                 <header class='header' id='header'>
@@ -29,7 +29,7 @@
                             <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
                             <a class='dropdown-item' href='#'>Profile</a>
                             <div class='dropdown-divider'></div>
-                            <a class='dropdown-item' href='?page=logout'>Logout</a>
+                            <a class='dropdown-item' href='?page=akses/logout'>Logout</a>
                             </div>
                         </li>
 
