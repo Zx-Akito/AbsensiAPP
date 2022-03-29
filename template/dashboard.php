@@ -24,7 +24,7 @@
                         
                         <li class='nav-item dropdown'>
                             <a class='nav-link nav__logo nav__link' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                                ZxAkito
+                                <i class='fa-solid fa-gear'></i> Pengaturan
                             </a>
                             <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
                             <a class='dropdown-item' href='#'>Profile</a>
