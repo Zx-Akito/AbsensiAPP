@@ -13,7 +13,7 @@
 
             <!--=============== CSS ===============-->
             <link rel='stylesheet' href='assets/css/styles.css'>
-            <link rel='stylesheet' href='assets/css/bootstrap.min.css'>
+            <link rel='stylesheet' href='assets/css/bootstrap.min.css?'>
             <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css'/>
             
             <title>AnimeHub</title>
