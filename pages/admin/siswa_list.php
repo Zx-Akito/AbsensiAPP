@@ -4,10 +4,10 @@
     $title = "Beranda";
     $konten = "
 
-    <section class='container section animate__animated animate__fadeInLeft' id='home'>
+    <section class='container section' id='home'>
         <div class='container-fluid d-flex justify-content-between'>
             <h4>Daftar Siswa</h4>
-            <a href='?page=pemilik/pengguna_tambah' class='d-none d-inline-block btn btn-sm btn-primary shadow-sm'><i class='fas fa-plus fa-2x'></i></a>
+            <a href='?page=pemilik/pengguna_tambah' class='d-none d-inline-block btn btn-sm btn-primary shadow-sm'><i class='fas fa-plus fa-2x text-white'></i></a>
         </div>
     </section>
     <div class='container'>
@@ -30,7 +30,7 @@
                         <tr>
                             <td>1</td>
                             <td>Dimas Triana</td>
-                            <td>Xii</td>
+                            <td>XII</td>
                             <td>Rekayasa Perangkat Lunak</td>
                             <td>Edit | Hapus</td>
                         </tr>
