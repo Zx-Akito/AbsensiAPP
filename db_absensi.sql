@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v13.1.1 (64 bit)
-MySQL - 10.4.20-MariaDB : Database - db_absensi
+MySQL - 10.1.38-MariaDB : Database - db_absensi
 *********************************************************************
 */
 
@@ -39,12 +39,15 @@ DROP TABLE IF EXISTS `kelas`;
 
 CREATE TABLE `kelas` (
   `id_kelas` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varbinary(3) DEFAULT NULL,
+  `nama` varchar(3) DEFAULT NULL,
   `jurusan` enum('Rekayasa Perangkat Lunak','Teknik Komputer Jaringan','Akuntansi Keuangan Lembaga','Perhotelan I','Perhotelan II','Teknik Kendaraan Ringan Otomotif I','Teknik Kendaraan Ringan Otomotif II','Otomatisasi Tata Kelola Perkantoran I','Otomatisasi Tata Kelola Perkantoran II') DEFAULT NULL,
   PRIMARY KEY (`id_kelas`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `kelas` */
+
+insert  into `kelas`(`id_kelas`,`nama`,`jurusan`) values 
+(1,'XII','Teknik Komputer Jaringan');
 
 /*Table structure for table `pengguna` */
 
@@ -81,6 +84,9 @@ CREATE TABLE `siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `siswa` */
+
+insert  into `siswa`(`nis`,`id_kelas`,`id_pengguna`,`nama`,`password`) values 
+(1,NULL,NULL,'1','$2y$10$5F2Bfr4JlDpCZc1EjEYr0.y8.QwjBy8H4gMLndrg/lzejHraIi252');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
