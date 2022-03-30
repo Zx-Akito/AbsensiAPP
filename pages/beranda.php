@@ -6,7 +6,7 @@
         $alert=Alert("success","Selamat Datang");
         break;
     }
-
+    $jurusan=Kelas($_SESSION['username'])['jurusan'];
     switch($_SESSION['JenisLog'])
     {
         case "administrator":
@@ -109,9 +109,9 @@
                                     <div class='row no-gutters align-items-center'>
                                         <div class='col mr-2'>
                                             <div class='text-xs font-weight-bold text-warning text-uppercase mb-1'>
-                                            Nis</div>
+                                            Kelas</div>
                                             <div class='mb-0 font-weight-bold text-gray'>
-                                                <p>".Kelas($_SESSION['username'])['kelas']."</p>
+                                                <p>".Kelas($_SESSION['username'])['nama']."</p>
                                             </div>
                                         </div>
                                         <div class='col-auto'>
@@ -130,9 +130,9 @@
                                     <div class='row no-gutters align-items-center'>
                                         <div class='col mr-2'>
                                             <div class='text-xs font-weight-bold text-primary text-uppercase mb-1'>
-                                            Jumlah Siswa</div>
+                                            Jurusan</div>
                                             <div class='h6 mb-0 font-weight-bold text-gray-800'>
-                                                <p>Siswa : 90</p>
+                                                <p>".Jurusan($jurusan)."</p>
                                             </div>
                                         </div>
                                         <div class='col-auto'>
