@@ -75,10 +75,20 @@
     {
         global $koneksi;
 
-        $Query=mysqli_query($koneksi,"SELECT * FROM pengguna WHERE id_pengguna='$kunci'");
+        $Query=mysqli_query($koneksi,"SELECT * FROM siswa WHERE nis='$kunci'");
         return mysqli_fetch_assoc($Query);
     
     }
+
+    function Kelas($kunci)
+    {
+        global $koneksi;
+
+        $Query=mysqli_query($koneksi,"SELECT * FROM kelas WHERE id_kelas='$kunci'");
+        return mysqli_fetch_assoc($Query);
+    
+    }
+
 
     function Alert($jenis="",$keterangan="")
     {
