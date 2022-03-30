@@ -114,4 +114,19 @@
         ";
     }
     
+    function Jurusan($data)
+    {
+        switch($data)
+        {
+            case "Rekayasa Perangkat Lunak":return "RPL";break;
+            case "Teknik Komputer Jaringan":return "TKJ";break;
+            case "Akuntansi Keuangan Lembaga":return "AKL";break;
+            case "Otomatisasi Tata Kelola Perkantoran I":return "OTKP I";break;
+            case "Otomatisasi Tata Kelola Perkantoran II":return "OTKP II";break;
+            case "Perhotelan I":return "HTL I";break;
+            case "Perhotelan II":return "HTL II";break;
+            case "Teknik Kendaraan Ringan Otomotif I":return "TKRO I";break;
+            case "Teknik Kendaraan Ringan Otomotif II":return "TKRO II";break;
+        }
+    }
 ?>
