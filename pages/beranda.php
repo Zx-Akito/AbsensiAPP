@@ -149,6 +149,7 @@
             ";
             break;
     }
+    $active0="active-link";
     $template = "dashboard";
     $title = "Beranda";
     $konten = "
