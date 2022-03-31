@@ -11,8 +11,8 @@
                     <td>{$key['nama_kelas']}</td>
                     <td>{$key['jurusan']}</td>
                     <td>
-                        <a href='?page=admin/siswa_edit' class='d-none d-inline-block btn btn-primary'><i class='fas fa-edit text-white'></i></a>
-                        <a href='?page=admin/siswa_reset' class='d-none d-inline-block btn btn-warning'><i class='fas fa-lock text-white'></i></a>
+                        <a href='?page=admin/siswa_edit&id={$key['nis']}' class='d-none d-inline-block btn btn-primary'><i class='fas fa-edit text-white'></i></a>
+                        <a href='?page=admin/siswa_reset&id={$key['nis']}' class='d-none d-inline-block btn btn-warning'><i class='fas fa-lock text-white'></i></a>
                         <a href='?page=admin/siswa_hapus' class='d-none d-inline-block btn btn-danger'><i class='fas fa-times text-white'></i></a>
                     </td>
                 </tr>
