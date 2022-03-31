@@ -1,4 +1,24 @@
 <?php
+    $ambil=AmbilDataAll("list_siswa","");
+    foreach($ambil as $key)
+    {
+        $no++;
+        $data.="
+            </thead>
+                <tr>
+                    <td>$no</td>
+                    <td>{$key['nama_siswa']}</td>
+                    <td>{$key['nama_kelas']}</td>
+                    <td>{$key['jurusan']}</td>
+                    <td>
+                        <a href='?page=admin/siswa_edit' class='d-none d-inline-block btn btn-primary'><i class='fas fa-edit text-white'></i></a>
+                        <a href='?page=admin/siswa_reset' class='d-none d-inline-block btn btn-warning'><i class='fas fa-lock text-white'></i></a>
+                        <a href='?page=admin/siswa_hapus' class='d-none d-inline-block btn btn-danger'><i class='fas fa-times text-white'></i></a>
+                    </td>
+                </tr>
+            </table>
+        ";
+    }
     $active1="active-link";
     $template = "dashboard";
     $title = "Beranda";
@@ -26,18 +46,7 @@
                             <th>Jurusan</th>
                             <th>Aksi</th>
                         </tr>
-                    </thead>
-                        <tr>
-                            <td>1</td>
-                            <td>Dimas Triana</td>
-                            <td>XII</td>
-                            <td>Rekayasa Perangkat Lunak</td>
-                            <td>
-                            <a href='?page=admin/siswa_edit' class='d-none d-inline-block btn btn-primary'><i class='fas fa-edit text-white'></i></a>
-                            <a href='?page=admin/siswa_hapus' class='d-none d-inline-block btn btn-danger'><i class='fas fa-times text-white'></i></a>
-                            </td>
-                        </tr>
-                    </table>
+                    $data
                 </div>
             </div>
         </div>
