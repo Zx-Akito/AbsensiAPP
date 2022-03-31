@@ -32,7 +32,10 @@
                             <td>Dimas Triana</td>
                             <td>XII</td>
                             <td>Rekayasa Perangkat Lunak</td>
-                            <td>Edit | Hapus</td>
+                            <td>
+                            <a href='?page=admin/siswa_edit' class='d-none d-inline-block btn btn-primary'><i class='fas fa-edit text-white'></i></a>
+                            <a href='?page=admin/siswa_hapus' class='d-none d-inline-block btn btn-danger'><i class='fas fa-times text-white'></i></a>
+                            </td>
                         </tr>
                     </table>
                 </div>
