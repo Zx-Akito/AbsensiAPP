@@ -166,68 +166,86 @@
         }
     }
 
-        //QUERY Tambah
-        function Tambah($tabel,$field,$value)
+    //QUERY Tambah
+    function Tambah($tabel,$field,$value)
+    {
+        global $koneksi;
+
+        $q="
+            INSERT INTO $tabel 
+            ($field) 
+            VALUES ($value)
+        ";
+
+        $hasil=mysqli_query($koneksi,$q);
+        if($hasil)
         {
-            global $koneksi;
-    
-            $q="
-                INSERT INTO $tabel 
-                ($field) 
-                VALUES ($value)
-            ";
-    
-            $hasil=mysqli_query($koneksi,$q);
-            if($hasil)
-            {
-                $alert=Toweweng("success","Data berhasil disimpan","");
-            }
-            else
-            {
-                $alert=Toweweng("error","Data gagal disimpan","");
-            }
-    
-            return $alert;
+            $alert=Toweweng("success","Data berhasil disimpan","");
         }
-    
-        //Query Edit/UPDATE
-        function Edit($tabel,$field,$kunci)
+        else
         {
-            global $koneksi;
-    
-            $q="update $tabel set $field where $kunci";
-            $hasil=mysqli_query($koneksi,$q);
-            if($hasil)
-            {
-                $alert=Toweweng("success","Data berhasil disimpan","");
-            }
-            else
-            {
-                $alert=Toweweng("error","Data gagal disimpan","");
-            }
-    
-            return $alert   ;
+            $alert=Toweweng("error","Data gagal disimpan","");
         }
-    
-        function AmbilData($tabel,$kunci)
+
+        return $alert;
+    }
+
+    //Query Edit/UPDATE
+    function Edit($tabel,$field,$kunci)
+    {
+        global $koneksi;
+
+        $q="update $tabel set $field where $kunci";
+        $hasil=mysqli_query($koneksi,$q);
+        if($hasil)
         {
-            global $koneksi;
-            $query="select * from $tabel where $kunci";
-            $query=mysqli_query($koneksi,$query);
-            return mysqli_fetch_assoc($query);
+            $alert=Toweweng("success","Data berhasil disimpan","");
         }
-    
-        function AmbilDataAll($tabel,$lain)
+        else
         {
-            global $koneksi;
-            $query="select * from $tabel $lain";
-            return mysqli_query($koneksi,$query);
+            $alert=Toweweng("error","Data gagal disimpan","");
         }
-    
-        function Hapus($tabel,$kunci)
+
+        return $alert   ;
+    }
+
+    function AmbilData($tabel,$kunci)
+    {
+        global $koneksi;
+        $query="select * from $tabel where $kunci";
+        $query=mysqli_query($koneksi,$query);
+        return mysqli_fetch_assoc($query);
+    }
+
+    function AmbilDataAll($tabel,$lain)
+    {
+        global $koneksi;
+        $query="select * from $tabel $lain";
+        return mysqli_query($koneksi,$query);
+    }
+
+    function Hapus($tabel,$kunci)
+    {
+        global $koneksi;
+        $q="DELETE FROM $tabel where $kunci";
+        return mysqli_query($koneksi,$q);
+    }
+
+    function ResetPengguna($a3,$kunci)
+    {
+        global $koneksi;
+
+        $q="update pengguna set password=md5('$a3') where id_pengguna='$kunci'";
+        $hasil=mysqli_query($koneksi,$q);
+        if($hasil)
         {
-            global $koneksi;
-            $q="DELETE FROM $tabel where $kunci";
-            return mysqli_query($koneksi,$q);
+            $keterangan=Toweweng("success","Data berhasil disimpan","");
         }
+        else
+        {
+            $keterangan=Toweweng("error","Data gagal disimpan","");
+        }
+
+            return $keterangan;
+    }
 ?>
