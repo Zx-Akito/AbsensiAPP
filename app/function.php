@@ -113,6 +113,42 @@
             </script>
         ";
     }
+
+        
+    //Alert Sweet
+    function Toweweng($jenis="",$peringatan="",$keterangan="")
+    {
+        return "
+            <script>
+                Swal.fire(
+                    '".$peringatan."',
+                    '".$keterangan."',
+                    '".$jenis."'
+                )
+            </script>
+        ";
+    }
+
+    //Alert Sweet konfirmasi
+    function towewengkonfirm($linkdirect)
+    {
+        return "
+        <script>
+            Swal.fire({
+                title: 'Yakin data akan dihapus?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yakin'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '".$linkdirect."';
+                }
+            })
+        </script>
+        "; 
+    }
     
     function Jurusan($data)
     {
@@ -129,4 +165,69 @@
             case "Teknik Kendaraan Ringan Otomotif II":return "TKRO II";break;
         }
     }
+
+        //QUERY Tambah
+        function Tambah($tabel,$field,$value)
+        {
+            global $koneksi;
+    
+            $q="
+                INSERT INTO $tabel 
+                ($field) 
+                VALUES ($value)
+            ";
+    
+            $hasil=mysqli_query($koneksi,$q);
+            if($hasil)
+            {
+                $alert=Toweweng("success","Data berhasil disimpan","");
+            }
+            else
+            {
+                $alert=Toweweng("error","Data gagal disimpan","");
+            }
+    
+            return $alert;
+        }
+    
+        //Query Edit/UPDATE
+        function Edit($tabel,$field,$kunci)
+        {
+            global $koneksi;
+    
+            $q="update $tabel set $field where $kunci";
+            $hasil=mysqli_query($koneksi,$q);
+            if($hasil)
+            {
+                $alert  =Toweweng("success","Data berhasil disimpan","");
+            }
+            else
+            {
+                $alert  =Toweweng("error","Data gagal disimpan","");
+            }
+    
+            return $alert   ;
+        }
+    
+        function AmbilData($tabel,$kunci)
+        {
+            global $koneksi;
+            $query="select * from $tabel where $kunci";
+            $query=mysqli_query($koneksi,$query);
+            return mysqli_fetch_assoc($query);
+        }
+    
+        function AmbilDataAll($tabel,$lain)
+        {
+            global $koneksi;
+            $query="select * from $tabel $lain";
+            return mysqli_query($koneksi,$query);
+        }
+    
+        function Hapus($tabel,$kunci)
+        {
+            global $koneksi;
+            $q="DELETE FROM $tabel where $kunci";
+            return mysqli_query($koneksi,$q);
+        }
 ?>
