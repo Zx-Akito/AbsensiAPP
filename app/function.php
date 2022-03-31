@@ -199,11 +199,11 @@
             $hasil=mysqli_query($koneksi,$q);
             if($hasil)
             {
-                $alert  =Toweweng("success","Data berhasil disimpan","");
+                $alert=Toweweng("success","Data berhasil disimpan","");
             }
             else
             {
-                $alert  =Toweweng("error","Data gagal disimpan","");
+                $alert=Toweweng("error","Data gagal disimpan","");
             }
     
             return $alert   ;
