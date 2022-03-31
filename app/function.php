@@ -234,8 +234,8 @@
     function ResetSiswa($a3,$kunci)
     {
         global $koneksi;
-
-        $q="update pengguna set password=md5('$a3') where id_pengguna='$kunci'";
+        $password=password_hash($a3, PASSWORD_DEFAULT);
+        $q="update siswa set password=('$password') where nis='$kunci'";
         $hasil=mysqli_query($koneksi,$q);
         if($hasil)
         {
