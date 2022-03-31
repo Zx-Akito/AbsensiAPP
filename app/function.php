@@ -231,7 +231,7 @@
         return mysqli_query($koneksi,$q);
     }
 
-    function ResetPengguna($a3,$kunci)
+    function ResetSiswa($a3,$kunci)
     {
         global $koneksi;
 
