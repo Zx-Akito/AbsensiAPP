@@ -4,7 +4,7 @@
     {
         $no++;
         $data.="
-            </thead>
+        <tbody>
                 <tr>
                     <td>$no</td>
                     <td>{$key['nama_siswa']}</td>
@@ -16,7 +16,7 @@
                         <a href='?page=admin/siswa_hapus' class='d-none d-inline-block btn btn-danger'><i class='fas fa-times text-white'></i></a>
                     </td>
                 </tr>
-            </table>
+            </tbody>
         ";
     }
     $active1="active-link";
@@ -46,7 +46,9 @@
                             <th>Jurusan</th>
                             <th>Aksi</th>
                         </tr>
+                    </thead>
                     $data
+                    </table>
                 </div>
             </div>
         </div>
