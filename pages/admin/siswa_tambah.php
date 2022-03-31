@@ -2,6 +2,37 @@
     $active1="active-link";
     $template = "dashboard";
     $title = "Beranda";
+
+    $a2=$_POST['a2'];
+    $var01=$_POST['var01'];
+    $var02=$_POST['var02'];
+    $tombol=$_POST['tombol'];
+    //kelas
+    $qkel=AmbilDataAll("kelas","");
+    foreach ($qkel as $arkel) 
+    {
+       
+      $listkel.="
+          <option value='{$arkel['id_kelas']}'> {$arkel['nama']} </option>
+      ";
+        
+    }
+    
+    if ($tombol)
+    {
+      if($var01!="" and $a2!="" and $var02!="")
+      {
+        $tabel="siswa";
+        $field="nis,id_kelas,nama";
+        $value="'$var01','$a2','$var02'";
+        $alert=Tambah($tabel,$field,$value);
+      }
+      else
+      {
+        $alert=Toweweng($jenis="info",$peringatan="Data Gagal di Tambah",$keterangan="Periksa Kembali Inputan");
+      }
+    }
+
     $konten ="
     <section class='container section' id='home'>
         <div class='container-fluid d-flex justify-content-between'>
@@ -27,22 +58,9 @@
             <div class='form-group row pl-2'>
                 <label class='col-sm-1 col-form-label'>Kelas</label>
                 <div class='col-sm-5'>
-                  <select class='custom-select' name='pilih'  id='pilih'>
+                  <select class='custom-select' name='a2'  id='pilih'>
                     <option selected>-- Pilih --</option>
-                    <option value='1'>Pemilik</option>
-                    <option value='2'>Gudang</option>
-                    <option value='3'>Kasir</option>
-                  </select>
-                </div>
-              </div>
-              <div class='form-group row pl-2'>
-                <label class='col-sm-1 col-form-label'>Jurusan</label>
-                <div class='col-sm-5'>
-                  <select class='custom-select' name='pilih'  id='pilih'>
-                    <option selected>-- Pilih --</option>
-                    <option value='1'>Pemilik</option>
-                    <option value='2'>Gudang</option>
-                    <option value='3'>Kasir</option>
+                    $listkel
                   </select>
                 </div>
               </div>
