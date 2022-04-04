@@ -11,6 +11,11 @@
     {
         case "administrator":
             $lihat="
+                <section class='container section animate__animated animate__fadeInLeft' id='home'>
+                    <h2 class='section__title'>Selamat Datang</h2>
+                    <h4 class='section__name text-capitalize'>".Admin($_SESSION['username'])['nama']."</h4>
+                </section>
+
                 <section class='container animate__animated animate__fadeInRight' id='home'>
                     <div class='row d-flex justify-content-end'>
                         <!-- nama sekolah-->
@@ -81,6 +86,11 @@
 
         case 'user':
             $lihat="
+                <section class='container section animate__animated animate__fadeInLeft' id='home'>
+                    <h2 class='section__title'>Selamat Datang</h2>
+                    <h4 class='section__name text-capitalize'>".Siswa($_SESSION['username'])['nama']."</h4>
+                </section>
+
                 <section class='container animate__animated animate__fadeInRight' id='home'>
                     <div class='row d-flex justify-content-end'>
                         <!-- nama sekolah-->
@@ -154,12 +164,7 @@
     $title = "Beranda";
     $konten = "
 
-    <section class='container section animate__animated animate__fadeInLeft' id='home'>
-        <h2 class='section__title'>Selamat Datang</h2>
-        <h4 class='section__name text-capitalize'>".Pengguna($_SESSION['username'])['nama']."</h4>
-    </section>
-
-    $lihat
+        $lihat
         
     ";
 
