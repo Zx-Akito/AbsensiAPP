@@ -3,8 +3,15 @@
     $page = $_GET['page'];
 
         if ($_SESSION['username']=="") {
+            if($page=="")
+            {
 
-            include("pages/akses/login.php");
+                include("pages/akses/absen.php");
+            }
+            else
+            {
+                include("pages/akses/login.php");
+            }
             
         } else {
             if (!file_exists("pages/$page.php")) {
