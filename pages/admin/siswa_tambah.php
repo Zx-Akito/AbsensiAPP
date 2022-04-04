@@ -13,7 +13,7 @@
     {
        
       $listkel.="
-          <option value='{$arkel['id_kelas']}'> {$arkel['nama']} </option>
+          <option value='{$arkel['id_kelas']}'> {$arkel['nama']} | {$arkel['jurusan']}  </option>
       ";
         
     }
