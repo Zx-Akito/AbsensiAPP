@@ -6,7 +6,7 @@
             if($page=="")
             {
 
-                include("pages/akses/abesen.php");
+                include("pages/akses/absen.php");
             }
             else
             {
