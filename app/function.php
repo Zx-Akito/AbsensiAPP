@@ -7,68 +7,28 @@
 
         global $koneksi;
 
-        $cekdb = mysqli_query($koneksi,"SELECT * FROM pengguna where username='$username'");
-        $hitung = mysqli_num_rows($cekdb);
+        $cekdb = mysqli_query($koneksi,"SELECT * FROM pengguna where id_pengguna='$username'");
         $pw = mysqli_fetch_array($cekdb); //Mengambil Data password yang ada di database Pengguna
         $pwsekarang = $pw['password']; //Mengambil password yang diketik user
 
-        $cek1 = mysqli_query($koneksi,"SELECT * FROM siswa where nis='$username'");
-        $hitung1 = mysqli_num_rows($cek1);
-        $pw1 = mysqli_fetch_array($cek1); //Mengambil Data password yang ada di database Siswa
-        $pwsekarang1 = $pw1['password']; //Mengambil password yang diketik user
-
-        if ($hitung>0)
+        if (mysqli_num_rows($cekdb) AND password_verify($password,$pwsekarang))
         {
-            //Jika ada
-            //Memverifikasi password
-            if (password_verify($password,$pwsekarang))
-            {
-                //Jika passwordnya benar
-                //Maka akan redirect ke halaman home
-                $_SESSION['username'] = $username;
-                $_SESSION['JenisLog']="administrator";
-                header("location:index.php?page=beranda&p=true"); 
-            }
-            else {
-                //Jika passwordnya salah
-                echo '
-                <script>
-                    alert("Password Salah");
-                    window.location.href="index.php";
-                </script>
-                ';
-            }
+            $_SESSION['username'] = $username;
+            $_SESSION['JenisLog']=$pw['level'];
+            setcookie("welcome",Alert("success","Selamat Datang"), time() + 3, '/' );
+            header("location:index.php?page=beranda"); 
         }
-        elseif ($hitung1>0) 
+        else
         {
-            if(password_verify($password,$pwsekarang1))
-            {
-                // jika password dan user benar
-                $_SESSION['username'] = $username;
-                $_SESSION['JenisLog']="user";
-                header("location:index.php?page=beranda&p=true");
-            }
-            else 
-            {
-                //Jika passwordnya salah
-                echo '
-                <script>
-                    alert("Password Salah");
-                    window.location.href="index.php";
-                </script>
-                ';
-            }
-        } 
-        else 
-        {
-            //Jika username tidak terdaftar
+            //Jika passwordnya salah
             echo '
             <script>
-                alert("User Tidak Ditemukan");
+                alert("Password Salah");
                 window.location.href="index.php";
             </script>
             ';
         }
+
     }
 
     function Siswa($kunci)
@@ -84,7 +44,7 @@
     {
         global $koneksi;
 
-        $Query=mysqli_query($koneksi,"SELECT * FROM pengguna WHERE username='$kunci'");
+        $Query=mysqli_query($koneksi,"SELECT * FROM admin WHERE id_admin='$kunci'");
         return mysqli_fetch_assoc($Query);
     
     }
