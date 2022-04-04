@@ -2,10 +2,10 @@
 
     switch($_SESSION['JenisLog'])
     {
-        case "administrator":
+        case "admin":
             include("./template/navbar/navbar_admin.php");
         break;
-        case "user":
+        case "siswa":
             include("./template/navbar/navbar_user.php");
         break;
     }
