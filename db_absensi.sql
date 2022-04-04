@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2022 at 02:01 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Waktu pembuatan: 04 Apr 2022 pada 23.35
+-- Versi server: 10.4.20-MariaDB
+-- Versi PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,13 +24,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `absensi`
+-- Struktur dari tabel `absensi`
 --
 
 CREATE TABLE `absensi` (
   `id_absensi` int(11) NOT NULL,
-  `nis` int(11) DEFAULT NULL,
-  `nama` varchar(30) DEFAULT NULL,
+  `nis` char(13) DEFAULT NULL,
   `masuk` datetime DEFAULT NULL,
   `keluar` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,7 +37,25 @@ CREATE TABLE `absensi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelas`
+-- Struktur dari tabel `admin`
+--
+
+CREATE TABLE `admin` (
+  `id_admin` char(11) NOT NULL,
+  `nama` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `nama`) VALUES
+('101', 'dimas');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -49,7 +65,7 @@ CREATE TABLE `kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `kelas`
+-- Dumping data untuk tabel `kelas`
 --
 
 INSERT INTO `kelas` (`id_kelas`, `nama`, `jurusan`) VALUES
@@ -58,133 +74,112 @@ INSERT INTO `kelas` (`id_kelas`, `nama`, `jurusan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `list_siswa`
--- (See below for the actual view)
---
-CREATE TABLE `list_siswa` (
-`id_kelas` int(11)
-,`nis` int(11)
-,`nama_siswa` varchar(50)
-,`nama_kelas` varchar(3)
-,`jurusan` enum('Rekayasa Perangkat Lunak','Teknik Komputer Jaringan','Akuntansi Keuangan Lembaga','Perhotelan I','Perhotelan II','Teknik Kendaraan Ringan Otomotif I','Teknik Kendaraan Ringan Otomotif II','Otomatisasi Tata Kelola Perkantoran I','Otomatisasi Tata Kelola Perkantoran II')
-);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pengguna`
+-- Struktur dari tabel `pengguna`
 --
 
 CREATE TABLE `pengguna` (
   `id_pengguna` int(11) NOT NULL,
-  `nama` varchar(50) DEFAULT NULL,
-  `username` varchar(15) DEFAULT NULL,
-  `password` varchar(99) DEFAULT NULL
+  `password` varchar(99) DEFAULT NULL,
+  `level` enum('admin','siswa') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengguna`
+-- Dumping data untuk tabel `pengguna`
 --
 
-INSERT INTO `pengguna` (`id_pengguna`, `nama`, `username`, `password`) VALUES
-(1, 'Admin', 'admin', '$2y$10$3a2KmNqpclVsI0mFvlDU0O38l181nisqM0vYMVL5NhLWsJPbbV2fW');
+INSERT INTO `pengguna` (`id_pengguna`, `password`, `level`) VALUES
+(101, '$2y$10$3a2KmNqpclVsI0mFvlDU0O38l181nisqM0vYMVL5NhLWsJPbbV2fW', 'admin'),
+(201, '$2y$10$3a2KmNqpclVsI0mFvlDU0O38l181nisqM0vYMVL5NhLWsJPbbV2fW', 'siswa');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siswa`
+-- Struktur dari tabel `siswa`
 --
 
 CREATE TABLE `siswa` (
-  `nis` int(11) NOT NULL,
+  `nis` char(13) NOT NULL,
   `id_kelas` int(11) DEFAULT NULL,
-  `nama` varchar(50) DEFAULT NULL,
-  `password` varchar(99) DEFAULT NULL
+  `nama` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `siswa`
+-- Dumping data untuk tabel `siswa`
 --
 
-INSERT INTO `siswa` (`nis`, `id_kelas`, `nama`, `password`) VALUES
-(1, 1, 'Dimas Triana', '$2y$10$EB9LLDT1GgbAqj0GUfydoO8qpXu0G2PcoW9q3xCOIniXy3IOzyj7G'),
-(12, 1, 'dd', NULL),
-(122, 1, 'qq', NULL),
-(1222, 1, 'dd', NULL);
-
--- --------------------------------------------------------
-
---
--- Structure for view `list_siswa`
---
-DROP TABLE IF EXISTS `list_siswa`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_siswa`  AS  (select `siswa`.`id_kelas` AS `id_kelas`,`siswa`.`nis` AS `nis`,`siswa`.`nama` AS `nama_siswa`,`kelas`.`nama` AS `nama_kelas`,`kelas`.`jurusan` AS `jurusan` from (`siswa` join `kelas`) where (`siswa`.`id_kelas` = `kelas`.`id_kelas`)) ;
+INSERT INTO `siswa` (`nis`, `id_kelas`, `nama`) VALUES
+('201', NULL, 'Rifki Nurmansyah');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `absensi`
+-- Indeks untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id_absensi`),
   ADD KEY `nis` (`nis`);
 
 --
--- Indexes for table `kelas`
+-- Indeks untuk tabel `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Indeks untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
--- Indexes for table `pengguna`
+-- Indeks untuk tabel `pengguna`
 --
 ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`id_pengguna`);
 
 --
--- Indexes for table `siswa`
+-- Indeks untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`nis`),
   ADD KEY `id_kelas` (`id_kelas`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `absensi`
+-- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `kelas`
+-- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `pengguna`
+-- AUTO_INCREMENT untuk tabel `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `absensi`
+-- Ketidakleluasaan untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   ADD CONSTRAINT `absensi_ibfk_1` FOREIGN KEY (`nis`) REFERENCES `siswa` (`nis`);
 
 --
--- Constraints for table `siswa`
+-- Ketidakleluasaan untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
   ADD CONSTRAINT `siswa_ibfk_2` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`);
