@@ -71,11 +71,20 @@
         }
     }
 
-    function Pengguna($kunci)
+    function Siswa($kunci)
     {
         global $koneksi;
 
         $Query=mysqli_query($koneksi,"SELECT * FROM siswa WHERE nis='$kunci'");
+        return mysqli_fetch_assoc($Query);
+    
+    }
+
+    function Admin($kunci)
+    {
+        global $koneksi;
+
+        $Query=mysqli_query($koneksi,"SELECT * FROM pengguna WHERE username='$kunci'");
         return mysqli_fetch_assoc($Query);
     
     }
