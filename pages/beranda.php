@@ -1,15 +1,11 @@
 <?php
-    $p=$_GET['p'];
-    switch($p)
-    {
-        case "true":
-        $alert=Alert("success","Selamat Datang");
-        break;
-    }
+    $alert=$_COOKIE['welcome'];
+    
     $jurusan=Kelas($_SESSION['username'])['jurusan'];
+
     switch($_SESSION['JenisLog'])
     {
-        case "administrator":
+        case "admin":
             $lihat="
                 <section class='container section animate__animated animate__fadeInLeft' id='home'>
                     <h2 class='section__title'>Selamat Datang</h2>
@@ -84,7 +80,7 @@
             ";
         break;
 
-        case 'user':
+        case 'siswa':
             $lihat="
                 <section class='container section animate__animated animate__fadeInLeft' id='home'>
                     <h2 class='section__title'>Selamat Datang</h2>
