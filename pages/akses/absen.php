@@ -11,8 +11,8 @@
         </div>  
         <div class='d-flex justify-content-center'>
             <div class='col-5 mb-5 mt-3'>
-                <div class='card col-3 mx-auto'>
-                    <img src='../../assets/img/a.gif' alt='user'>
+                <div class='col-3 mx-auto'>
+                    <img src='././assets/img/a.webp' alt='user' style='width:100%;'>
                 </div>
                 <div class='col-5 mx-auto my-3'>
                     <h6>Nama  : Rifki Nurmansyah</h6>
