@@ -31,7 +31,7 @@
                     </div>
                     <div class='mt-4'>
                         <input type='submit' class='btn btn-success ml-2 text-white' name='tombol' value='Update'></input>
-                        <a href='?page=admin/siswa_list' class='btn btn-danger ml-2'>Kembali</a>
+                        <a href='?page=admin/kelas_list' class='btn btn-danger ml-2'>Kembali</a>
                     </div>
                 </form>
             </div>
