@@ -1,5 +1,5 @@
 <?php
-    $ambil=AmbilDataAll("list_siswa","");
+    $ambil=AmbilDataAll("siswa_list","");
     foreach($ambil as $key)
     {
         $no++;
