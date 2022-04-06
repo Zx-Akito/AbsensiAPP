@@ -1,4 +1,42 @@
 <?php
+    $id=$_GET['id'];
+    //MENAMPILKAN TOWEWENG KONFIRMASI SEBELUM DIHAPUS
+    $p=$_GET['p'];
+    switch($p)
+    {
+        case "tanya":
+            $alert=towewengkonfirm("?page=admin/siswa_hapus&id=$id");
+        break;
+    }
+
+    //TOWEWENG SETELAH DIHAPUS
+    $h=$_GET['h'];
+    switch($h)
+    {
+        case "true":
+            $alert=toweweng("success","Data telah dihapus");
+        break;
+        case "false":
+            $alert=toweweng("info","Maaf Data tidak dapat dihapus");
+        break;
+    }
+
+    $ambil=AmbilDataAll("kelas","");
+    foreach($ambil as $key)
+    {
+        $no++;
+        $data.="
+            <tr>
+                <td>$no</td>
+                <td>{$key['nama']}</td>
+                <td>{$key['jurusan']}</td>
+                <td>
+                    <a href='?page=admin/kelas_edit&id={$key['id_kelas']}' class='d-none d-inline-block btn btn-primary'><i class='fas fa-edit text-white'></i></a>
+                    <a href='?page=$page&id={$key['id_kelas']}&p=tanya' class='d-none d-inline-block btn btn-danger'><i class='fas fa-times text-white'></i></a>
+                </td>
+            </tr>
+            ";
+    }
     $active2="active-link";
     $template = "dashboard";
     $title = "Beranda";
@@ -26,15 +64,7 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                        <tr>
-                            <td>1</td>
-                            <td>XII</td>
-                            <td>Rekayasa Perangkat Lunak</td>
-                            <td>
-                                <a href='?page=admin/kelas_edit' class='d-none d-inline-block btn btn-primary'><i class='fas fa-edit text-white'></i></a>
-                                <a href='?page=admin/kelas_hapus' class='d-none d-inline-block btn btn-danger'><i class='fas fa-times text-white'></i></a>
-                            </td>
-                        </tr>
+                        $data
                     </table>
                 </div>
             </div>
