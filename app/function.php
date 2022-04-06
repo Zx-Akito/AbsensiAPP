@@ -7,7 +7,7 @@
 
         global $koneksi;
 
-        $cekdb = mysqli_query($koneksi,"SELECT * FROM pengguna where id_pengguna='$username'");
+        $cekdb = mysqli_query($koneksi,"SELECT * FROM pengguna where username='$username'");
         $pw = mysqli_fetch_array($cekdb); //Mengambil Data password yang ada di database Pengguna
         $pwsekarang = $pw['password']; //Mengambil password yang diketik user
 
@@ -35,7 +35,7 @@
     {
         global $koneksi;
 
-        $Query=mysqli_query($koneksi,"SELECT * FROM siswa WHERE nis='$kunci'");
+        $Query=mysqli_query($koneksi,"SELECT * FROM siswa WHERE username='$kunci'");
         return mysqli_fetch_assoc($Query);
     
     }
@@ -44,7 +44,7 @@
     {
         global $koneksi;
 
-        $Query=mysqli_query($koneksi,"SELECT * FROM admin WHERE id_admin='$kunci'");
+        $Query=mysqli_query($koneksi,"SELECT * FROM admin WHERE username='$kunci'");
         return mysqli_fetch_assoc($Query);
     
     }
@@ -53,7 +53,7 @@
     {
         global $koneksi;
 
-        $Query=mysqli_query($koneksi,"SELECT * FROM siswa_list WHERE nis='$kunci'");
+        $Query=mysqli_query($koneksi,"SELECT * FROM siswa_list WHERE username='$kunci'");
         return mysqli_fetch_assoc($Query);
     
     }
@@ -158,6 +158,35 @@
 
         return $alert;
     }
+     //QUERY Tambah
+    function Tambah2($tabel1,$field1,$value1,$tabel2,$field2,$value2)
+    {
+        global $koneksi;
+
+        $q="
+            INSERT INTO $tabel1 
+            ($field1) 
+            VALUES ($value1)
+        ";
+        $q1="
+            INSERT INTO $tabel2 
+            ($field2) 
+            VALUES ($value2)
+        ";
+        $hasil=mysqli_query($koneksi,$q);
+        $hasil1=mysqli_query($koneksi,$q1);
+        if($hasil AND $hasil1)
+        {
+            $alert=Toweweng("success","Data berhasil disimpan","");
+        }
+        else
+        {
+            $alert=Toweweng("error","Data gagal disimpan","");
+        }
+
+        return $alert;
+    }
+
 
     //Query Edit/UPDATE
     function Edit($tabel,$field,$kunci)
