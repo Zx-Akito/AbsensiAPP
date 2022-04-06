@@ -53,7 +53,7 @@
     {
         global $koneksi;
 
-        $Query=mysqli_query($koneksi,"SELECT * FROM kelas WHERE id_kelas='$kunci'");
+        $Query=mysqli_query($koneksi,"SELECT * FROM siswa_list WHERE nis='$kunci'");
         return mysqli_fetch_assoc($Query);
     
     }
