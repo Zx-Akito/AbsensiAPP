@@ -117,7 +117,7 @@
                                             <div class='text-xs font-weight-bold text-warning text-uppercase mb-1'>
                                             Kelas</div>
                                             <div class='mb-0 font-weight-bold text-gray'>
-                                                <p>".Kelas($_SESSION['username'])['nama']."</p>
+                                                <p>".Kelas($_SESSION['username'])['nama_kelas']."</p>
                                             </div>
                                         </div>
                                         <div class='col-auto'>
