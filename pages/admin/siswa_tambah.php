@@ -11,21 +11,32 @@
     $qkel=AmbilDataAll("kelas","");
     foreach ($qkel as $arkel) 
     {
-       
+      
       $listkel.="
           <option value='{$arkel['id_kelas']}'> {$arkel['nama']} | {$arkel['jurusan']}  </option>
       ";
-        
+      
     }
     
     if ($tombol)
     {
       if($var01!="" and $a2!="" and $var02!="")
       {
-        $tabel="siswa";
-        $field="nis,id_kelas,nama";
-        $value="'$var01','$a2','$var02'";
-        $alert=Tambah($tabel,$field,$value);
+        $check_barcode=mysqli_query($koneksi, "SELECT username FROM pengguna where username='$var01'");
+        if(mysqli_num_rows($check_barcode) > 0)
+        {
+          $alert=Toweweng($jenis="info",$peringatan="Data Gagal di Tambah",$keterangan="Ges aaya");
+        }
+        else
+        {
+          $tabel1="siswa";
+          $field1="username,id_kelas,nama";
+          $value1="'$var01','$a2','$var02'";
+          $tabel2="pengguna";
+          $field2="username";
+          $value2="'$var01'";
+          $alert=Tambah2($tabel1,$field1,$value1,$tabel2,$field2,$value2);
+        }
       }
       else
       {
@@ -44,7 +55,7 @@
             <div class='card-body'>
             <form action='' method='POST'  autocomplete='off'>
             <div class='form-group row pl-2'>
-              <label class='col-sm-1 col-form-label'>Nis</label>
+              <label class='col-sm-1 col-form-label'>User</label>
               <div class='col-sm-5'>
                 <input type='text' class='form-control form-control-sm' name='var01'>
               </div>
