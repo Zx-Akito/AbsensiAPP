@@ -1,4 +1,26 @@
 <?php
+    $id=$_GET['id'];
+    //MENAMPILKAN TOWEWENG KONFIRMASI SEBELUM DIHAPUS
+    $p=$_GET['p'];
+    switch($p)
+    {
+        case "tanya":
+            $alert=towewengkonfirm("?page=admin/siswa_hapus&id=$id");
+        break;
+    }
+
+    //TOWEWENG SETELAH DIHAPUS
+    $h=$_GET['h'];
+    switch($h)
+    {
+        case "true":
+            $alert=toweweng("success","Data telah dihapus");
+        break;
+        case "false":
+            $alert=toweweng("info","Maaf Data tidak dapat dihapus");
+        break;
+    }
+    
     $ambil=AmbilDataAll("siswa_list","");
     foreach($ambil as $key)
     {
@@ -13,7 +35,7 @@
                     <td>
                         <a href='?page=admin/siswa_edit&id={$key['nis']}' class='d-none d-inline-block btn btn-primary'><i class='fas fa-edit text-white'></i></a>
                         <a href='?page=admin/siswa_reset&id={$key['nis']}' class='d-none d-inline-block btn btn-warning'><i class='fas fa-lock text-white'></i></a>
-                        <a href='?page=admin/siswa_hapus' class='d-none d-inline-block btn btn-danger'><i class='fas fa-times text-white'></i></a>
+                        <a href='?page=$page&id={$key['nis']}&p=tanya' class='d-none d-inline-block btn btn-danger'><i class='fas fa-times text-white'></i></a>
                     </td>
                 </tr>
             </tbody>
