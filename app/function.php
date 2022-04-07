@@ -233,7 +233,7 @@
     {
         global $koneksi;
         $password=password_hash($a3, PASSWORD_DEFAULT);
-        $q="update siswa set password=('$password') where nis='$kunci'";
+        $q="update pengguna set password=('$password') where username='$kunci'";
         $hasil=mysqli_query($koneksi,$q);
         if($hasil)
         {
