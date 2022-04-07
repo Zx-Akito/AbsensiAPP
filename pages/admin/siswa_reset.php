@@ -5,9 +5,9 @@
     $id=$_GET['id'];
     $tombol=$_POST['tombol'];
 
-    $tampil=mysqli_query($koneksi,"SELECT pengguna.username, siswa.username, siswa.nama FROM pengguna, siswa WHERE siswa.username='$id'");
+    $tampil=mysqli_query($koneksi,"SELECT pengguna.username_siswa, siswa.username_siswa, siswa.nama FROM pengguna, siswa WHERE siswa.username_siswa='$id'");
     $cek=mysqli_fetch_assoc($tampil);
-    $a1=$cek['username'];
+    $a1=$cek['username_siswa'];
     $a2=$cek['nama'];
     $a3=$cek['password'];   
 

@@ -30,7 +30,7 @@
         else
         {
           $tabel1="siswa";
-          $field1="username,id_kelas,nama";
+          $field1="username_siswa,id_kelas,nama";
           $value1="'$var01','$a2','$var02'";
           $tabel2="pengguna";
           $field2="username";

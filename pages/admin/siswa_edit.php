@@ -64,7 +64,7 @@
       if($var01!="" and $a2!="" and $var02!="")
       {
         $field = "
-        username='$var01',
+        username_siswa='$var01',
         id_kelas='$a2',
         nama='$var02'
         ";
