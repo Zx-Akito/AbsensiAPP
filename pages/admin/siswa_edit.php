@@ -8,7 +8,7 @@
     $var02=$_POST['var02'];
     $tombol=$_POST['tombol'];
     $tabel="siswa";
-    $kunci="username='{$_GET['id']}'";
+    $kunci="username_siswa='{$_GET['id']}'";
     // cek siswa
     $cek_siswa=AmbilData($tabel, $kunci);
 
@@ -89,7 +89,7 @@
             <div class='form-group row pl-2'>
               <label class='col-sm-1 col-form-label'>Nis</label>
               <div class='col-sm-5'>
-                <input type='text' class='form-control form-control-sm' name='var01' value='$cek_siswa[username]'>
+                <input type='text' class='form-control form-control-sm' name='var01' value='$cek_siswa[username_siswa]'>
               </div>
             </div>
             <div class='form-group row pl-2'>

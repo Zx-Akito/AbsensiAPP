@@ -5,7 +5,7 @@
     $id=$_GET['id'];
     $tombol=$_POST['tombol'];
 
-    $tampil=mysqli_query($koneksi,"SELECT pengguna.username_siswa, siswa.username_siswa, siswa.nama FROM pengguna, siswa WHERE siswa.username_siswa='$id'");
+    $tampil=mysqli_query($koneksi,"SELECT pengguna.username, siswa.username_siswa, siswa.nama FROM pengguna, siswa WHERE siswa.username_siswa='$id'");
     $cek=mysqli_fetch_assoc($tampil);
     $a1=$cek['username_siswa'];
     $a2=$cek['nama'];
@@ -28,7 +28,7 @@
             <div class='card-body'>
             <form action='' method='POST'  autocomplete='off'>
             <div class='form-group row pl-2'>
-              <label class='col-sm-1 col-form-label-sm'>Nis</label>
+              <label class='col-sm-1 col-form-label-sm'>User</label>
               <div class='col-sm-5'>
                 <input type='text' class='form-control form-control-sm' name='var01' value='$a1'>
               </div>
