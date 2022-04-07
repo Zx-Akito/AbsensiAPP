@@ -27,7 +27,7 @@ CREATE TABLE `absensi` (
   `keluar` datetime DEFAULT NULL,
   PRIMARY KEY (`id_absensi`),
   KEY `nis` (`nis`),
-  CONSTRAINT `absensi_ibfk_1` FOREIGN KEY (`nis`) REFERENCES `siswa` (`nis`)
+  CONSTRAINT `absensi_ibfk_1` FOREIGN KEY (`nis`) REFERENCES `siswa` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `absensi` */
@@ -37,14 +37,14 @@ CREATE TABLE `absensi` (
 DROP TABLE IF EXISTS `admin`;
 
 CREATE TABLE `admin` (
-  `id_admin` char(11) NOT NULL,
+  `username` char(11) NOT NULL,
   `nama` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id_admin`)
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `admin` */
 
-insert  into `admin`(`id_admin`,`nama`) values 
+insert  into `admin`(`username`,`nama`) values 
 ('101','dimas');
 
 /*Table structure for table `kelas` */
@@ -68,16 +68,17 @@ insert  into `kelas`(`id_kelas`,`nama`,`jurusan`) values
 DROP TABLE IF EXISTS `pengguna`;
 
 CREATE TABLE `pengguna` (
-  `id_pengguna` int(11) NOT NULL AUTO_INCREMENT,
+  `username` int(11) NOT NULL AUTO_INCREMENT,
   `password` varchar(99) DEFAULT NULL,
-  `level` enum('admin','siswa') DEFAULT NULL,
-  PRIMARY KEY (`id_pengguna`)
-) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8mb4;
+  `level` enum('admin','siswa') DEFAULT 'siswa',
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=22223 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pengguna` */
 
-insert  into `pengguna`(`id_pengguna`,`password`,`level`) values 
+insert  into `pengguna`(`username`,`password`,`level`) values 
 (101,'$2y$10$3a2KmNqpclVsI0mFvlDU0O38l181nisqM0vYMVL5NhLWsJPbbV2fW','admin'),
+(111,NULL,'siswa'),
 (201,'$2y$10$3a2KmNqpclVsI0mFvlDU0O38l181nisqM0vYMVL5NhLWsJPbbV2fW','siswa');
 
 /*Table structure for table `siswa` */
@@ -85,18 +86,20 @@ insert  into `pengguna`(`id_pengguna`,`password`,`level`) values
 DROP TABLE IF EXISTS `siswa`;
 
 CREATE TABLE `siswa` (
-  `nis` char(13) NOT NULL,
+  `username` char(13) NOT NULL,
   `id_kelas` int(11) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`nis`),
+  PRIMARY KEY (`username`),
   KEY `id_kelas` (`id_kelas`),
   CONSTRAINT `siswa_ibfk_2` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `siswa` */
 
-insert  into `siswa`(`nis`,`id_kelas`,`nama`) values 
-('201',1,'Rifki Nurmansyah');
+insert  into `siswa`(`username`,`id_kelas`,`nama`) values 
+('100',1,'Kresna'),
+('111',1,'Dadan'),
+('201',1,'Rifki');
 
 /*Table structure for table `siswa_list` */
 
@@ -107,7 +110,7 @@ DROP TABLE IF EXISTS `siswa_list`;
 
 /*!50001 CREATE TABLE  `siswa_list`(
  `id_kelas` int(11) ,
- `nis` char(13) ,
+ `username` char(13) ,
  `nama_siswa` varchar(50) ,
  `nama_kelas` varchar(3) ,
  `jurusan` enum('Rekayasa Perangkat Lunak','Teknik Komputer Jaringan','Akuntansi Keuangan Lembaga','Perhotelan I','Perhotelan II','Teknik Kendaraan Ringan Otomotif I','Teknik Kendaraan Ringan Otomotif II','Otomatisasi Tata Kelola Perkantoran I','Otomatisasi Tata Kelola Perkantoran II') 
@@ -118,7 +121,7 @@ DROP TABLE IF EXISTS `siswa_list`;
 /*!50001 DROP TABLE IF EXISTS `siswa_list` */;
 /*!50001 DROP VIEW IF EXISTS `siswa_list` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `siswa_list` AS (select `kelas`.`id_kelas` AS `id_kelas`,`siswa`.`nis` AS `nis`,`siswa`.`nama` AS `nama_siswa`,`kelas`.`nama` AS `nama_kelas`,`kelas`.`jurusan` AS `jurusan` from (`kelas` join `siswa`) where `kelas`.`id_kelas` = `siswa`.`id_kelas`) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `siswa_list` AS (select `kelas`.`id_kelas` AS `id_kelas`,`siswa`.`username` AS `username`,`siswa`.`nama` AS `nama_siswa`,`kelas`.`nama` AS `nama_kelas`,`kelas`.`jurusan` AS `jurusan` from (`kelas` join `siswa`) where `kelas`.`id_kelas` = `siswa`.`id_kelas`) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
