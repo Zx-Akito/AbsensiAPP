@@ -35,7 +35,7 @@
     {
         global $koneksi;
 
-        $Query=mysqli_query($koneksi,"SELECT * FROM siswa WHERE username='$kunci'");
+        $Query=mysqli_query($koneksi,"SELECT * FROM siswa WHERE username_siswa='$kunci'");
         return mysqli_fetch_assoc($Query);
     
     }
@@ -44,7 +44,7 @@
     {
         global $koneksi;
 
-        $Query=mysqli_query($koneksi,"SELECT * FROM admin WHERE username='$kunci'");
+        $Query=mysqli_query($koneksi,"SELECT * FROM admin WHERE username_admin='$kunci'");
         return mysqli_fetch_assoc($Query);
     
     }
@@ -53,7 +53,7 @@
     {
         global $koneksi;
 
-        $Query=mysqli_query($koneksi,"SELECT * FROM siswa_list WHERE username='$kunci'");
+        $Query=mysqli_query($koneksi,"SELECT * FROM siswa_list WHERE username_siswa='$kunci'");
         return mysqli_fetch_assoc($Query);
     
     }
