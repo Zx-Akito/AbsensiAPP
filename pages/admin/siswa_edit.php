@@ -8,7 +8,7 @@
     $var02=$_POST['var02'];
     $tombol=$_POST['tombol'];
     $tabel="siswa";
-    $kunci="nis='{$_GET['id']}'";
+    $kunci="username='{$_GET['id']}'";
     // cek siswa
     $cek_siswa=AmbilData($tabel, $kunci);
 
@@ -35,25 +35,25 @@
       case "2":
         $pilih2="selected";
         break;
-      case "Akuntansi Keuangan Lembaga":
+      case "3":
         $pilih3="selected";
         break;
-      case "Perhotelan I":
+      case "4":
         $pilih4="selected";
         break;
-      case "Perhotelan II":
+      case "5":
         $pilih5="selected";
         break;
-      case "Teknik Kendaraan Ringan Otomotif I":
+      case "6":
         $pilih6="selected";
         break;
-      case "Teknik Kendaraan Ringan Otomotif II":
+      case "7":
         $pilih7="selected";
         break;
-      case "Otomatisasi Tata Kelola Perkantoran I":
+      case "8":
         $pilih8="selected";
         break;
-      case "Otomatisasi Tata Kelola Perkantoran II":
+      case "9":
         $pilih9="selected";
         break;
     
@@ -64,7 +64,7 @@
       if($var01!="" and $a2!="" and $var02!="")
       {
         $field = "
-        nis='$var01',
+        username='$var01',
         id_kelas='$a2',
         nama='$var02'
         ";
@@ -89,7 +89,7 @@
             <div class='form-group row pl-2'>
               <label class='col-sm-1 col-form-label'>Nis</label>
               <div class='col-sm-5'>
-                <input type='text' class='form-control form-control-sm' name='var01' value='$cek_siswa[nis]'>
+                <input type='text' class='form-control form-control-sm' name='var01' value='$cek_siswa[username]'>
               </div>
             </div>
             <div class='form-group row pl-2'>
@@ -105,19 +105,19 @@
                     <option>-- Pilih --</option>
                     <option value='1' $pilih1>Rekayasa Perangkat Lunak</option>
                     <option value='2' $pilih2>Teknik Komputer Jaringan</option>
-                    <option value='3' $pilih3>Pemilik</option>
-                    <option value='4' $pilih4>Pemilik</option>
-                    <option value='5' $pilih5>Pemilik</option>
-                    <option value='6' $pilih6>Pemilik</option>
-                    <option value='7' $pilih7>Pemilik</option>
-                    <option value='8' $pilih8>Pemilik</option>
-                    <option value='9' $pilih9>Pemilik</option>
+                    <option value='3' $pilih3>Akuntansi Keuangan Lembaga</option>
+                    <option value='4' $pilih4>Perhotelan I</option>
+                    <option value='5' $pilih5>Perhotelan II</option>
+                    <option value='6' $pilih6>Teknik Kendaraan Ringan Otomotif I</option>
+                    <option value='7' $pilih7>Teknik Kendaraan Ringan Otomotif II</option>
+                    <option value='8' $pilih8>Otomatisasi Tata Kelola Perkantoran I</option>
+                    <option value='9' $pilih9>Otomatisasi Tata Kelola Perkantoran II</option>
 
                   </select>
                 </div>
               </div>
               <div class='mt-4'>
-                <input type='submit' class='btn btn-blue ml-2 text-white' name='tombol' value='tambah'></input>
+                <input type='submit' class='btn btn-blue ml-2 text-white' name='tombol' value='Update'></input>
                 <a href='?page=admin/siswa_list' class='btn btn-danger ml-2'>Kembali</a>
               </div>
           </form>
