@@ -33,7 +33,7 @@
                     <td>{$key['nama_kelas']}</td>
                     <td>{$key['jurusan']}</td>
                     <td>
-                        <a href='?page=admin/siswa_edit&id={$key['username_siswa']}' class='d-none d-inline-block btn btn-primary'><i class='fas fa-edit text-white'></i></a>
+                        <a href='?page=admin/siswa_edit&id={$key['username_siswa']}&id1={$key['id_kelas']}' class='d-none d-inline-block btn btn-primary'><i class='fas fa-edit text-white'></i></a>
                         <a href='?page=admin/siswa_reset&id={$key['username_siswa']}' class='d-none d-inline-block btn btn-warning'><i class='fas fa-lock text-white'></i></a>
                         <a href='?page=$page&id={$key['username_siswa']}&p=tanya' class='d-none d-inline-block btn btn-danger'><i class='fas fa-times text-white'></i></a>
                     </td>
