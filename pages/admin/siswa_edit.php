@@ -8,56 +8,30 @@
     $var02=$_POST['var02'];
     $tombol=$_POST['tombol'];
     $tabel="siswa";
-    $kunci="username_siswa='{$_GET['id']}'";
+    $id=$_GET['id'];
+    $id1=$_GET['id1'];
+    $kunci="username_siswa='$id'";
     // cek siswa
     $cek_siswa=AmbilData($tabel, $kunci);
 
     //kelas
-    // $qkel=AmbilDataAll("kelas","");
-    // foreach ($qkel as $arkel) 
-    // {
-    //    if ($a2==$arkel['id_kelas']) {
-    //      $listkel.="
-    //          <option value='{$arkel['id_kelas']}' selected> {$arkel['nama']} | {$arkel['jurusan']}  </option>
-    //      ";
-    //    } else {
-    //      $listkel.="
-    //          <option value='{$arkel['id_kelas']}'> {$arkel['nama']} | {$arkel['jurusan']}  </option>
-    //      ";
-    //    }
-       
+    $qkel=AmbilDataAll("kelas","where id_kelas='$id1'");
+    foreach ($qkel as $arkel) 
+    {
+      if ($a2==$arkel['id_kelas']) {
+        $listkel.="
+            <option value='{$arkel['id_kelas']}' selected> {$arkel['nama']} | {$arkel['jurusan']}  </option>
+        ";
+      } 
+      else
+      {
+        $listkel.="
+            <option value='{$arkel['id_kelas']}'> {$arkel['nama']} | {$arkel['jurusan']}  </option>
+        ";
+      }
         
-    // }
-    switch ($cek_siswa['id_kelas']) {
-      case "1":
-        $pilih1="selected";
-        break;
-      case "2":
-        $pilih2="selected";
-        break;
-      case "3":
-        $pilih3="selected";
-        break;
-      case "4":
-        $pilih4="selected";
-        break;
-      case "5":
-        $pilih5="selected";
-        break;
-      case "6":
-        $pilih6="selected";
-        break;
-      case "7":
-        $pilih7="selected";
-        break;
-      case "8":
-        $pilih8="selected";
-        break;
-      case "9":
-        $pilih9="selected";
-        break;
-    
     }
+    
     
     if ($tombol)
     {
@@ -101,17 +75,9 @@
             <div class='form-group row pl-2'>
                 <label class='col-sm-1 col-form-label'>Kelas</label>
                 <div class='col-sm-5'>
-                  <select class='custom-select' name='a2' value='$cek_siswa[id_kelas]'  id='pilih'>
+                  <select class='custom-select' name='a2' value='$a2' id='pilih'>
                     <option>-- Pilih --</option>
-                    <option value='1' $pilih1>Rekayasa Perangkat Lunak</option>
-                    <option value='2' $pilih2>Teknik Komputer Jaringan</option>
-                    <option value='3' $pilih3>Akuntansi Keuangan Lembaga</option>
-                    <option value='4' $pilih4>Perhotelan I</option>
-                    <option value='5' $pilih5>Perhotelan II</option>
-                    <option value='6' $pilih6>Teknik Kendaraan Ringan Otomotif I</option>
-                    <option value='7' $pilih7>Teknik Kendaraan Ringan Otomotif II</option>
-                    <option value='8' $pilih8>Otomatisasi Tata Kelola Perkantoran I</option>
-                    <option value='9' $pilih9>Otomatisasi Tata Kelola Perkantoran II</option>
+                    $listkel
 
                   </select>
                 </div>
