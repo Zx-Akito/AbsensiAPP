@@ -2,6 +2,25 @@
     $active2="active-link";
     $template = "dashboard";
     $title = "Beranda";
+
+    $tombol=$_POST['tombol'];
+    $var01=$_POST['var01'];
+    $var02=$_POST['var02'];
+    if($tombol)
+    {
+        if($var01 AND $var02!="")
+        {
+            $tabel="kelas";
+            $field="nama, jurusan";
+            $value="'$var01','$var02'";
+            $alert=Tambah($tabel,$field,$value);
+        }
+        else
+        {
+            $alert=Toweweng($jenis="info",$peringatan="Data Gagal di Tambah",$keterangan="Periksa Kembali Inputan");
+        }
+    }
+
     $konten ="
     <section class='container section' id='home'>
         <div class='container-fluid d-flex justify-content-between'>
@@ -19,13 +38,19 @@
                         </div>
                     </div> 
                     <div class='form-group row pl-2'>
-                            <label class='col-sm-1 col-form-label'>Jurusan</label>
+                        <label class='col-sm-1 col-form-label'>Jurusan</label>
                         <div class='col-sm-5'>
-                            <select class='custom-select' name='pilih'  id='pilih'>
+                            <select class='custom-select' name='var02'  id='pilih'>
                                 <option selected>-- Pilih --</option>
-                                <option value='1'>Pemilik</option>
-                                <option value='2'>Gudang</option>
-                                <option value='3'>Kasir</option>
+                                <option value='Rekayasa Perangkat Lunak'>Rekayasa Perangkat Lunak</option>
+                                <option value='Teknik Komputer Jaringan'>Teknik Komputer Jaringan</option>
+                                <option value='Akuntansi Keuangan Lembaga'>Akuntansi Keuangan Lembaga</option>
+                                <option value='Otomatisasi Tata Kelola Perkantoran I'>Otomatisasi Tata Kelola Perkantoran I</option>
+                                <option value='Otomatisasi Tata Kelola Perkantoran II'>Otomatisasi Tata Kelola Perkantoran II</option>
+                                <option value='Perhotelan I'>Perhotelan I</option>
+                                <option value='Perhotelan II'>Perhotelan II</option>
+                                <option value='Teknik Kendaraan Ringan Otomotif I'>Teknik Kendaraan Ringan Otomotif I</option>
+                                <option value='Teknik Kendaraan Ringan Otomotif II'>Teknik Kendaraan Ringan Otomotif II</option>
                             </select>
                         </div>
                     </div>
