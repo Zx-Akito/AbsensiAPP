@@ -5,7 +5,7 @@
     switch($p)
     {
         case "tanya":
-            $alert=towewengkonfirm("?page=admin/siswa_hapus&id=$id");
+            $alert=towewengkonfirm("?page=admin/kelas_hapus&id=$id");
         break;
     }
 
