@@ -13,12 +13,14 @@
     $kunci="username_siswa='$id'";
     // cek siswa
     $cek_siswa=AmbilData($tabel, $kunci);
+    $id_kelas=$cek_siswa['id_kelas'];
+
 
     //kelas
-    $qkel=AmbilDataAll("kelas","where id_kelas='$id1'");
+    $qkel=AmbilDataAll("kelas","");
     foreach ($qkel as $arkel) 
     {
-      if ($a2==$arkel['id_kelas']) {
+      if ($id_kelas==$arkel['id_kelas']) {
         $listkel.="
             <option value='{$arkel['id_kelas']}' selected> {$arkel['nama']} | {$arkel['jurusan']}  </option>
         ";
@@ -76,7 +78,7 @@
                 <label class='col-sm-1 col-form-label'>Kelas</label>
                 <div class='col-sm-5'>
                   <select class='custom-select' name='a2' value='$a2' id='pilih'>
-                    <option>-- Pilih --</option>
+                    <option value=''>-- Pilih --</option>
                     $listkel
 
                   </select>
