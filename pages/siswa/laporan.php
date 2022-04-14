@@ -1,6 +1,6 @@
 <?php
-
-$ambil=AmbilDataAll("lap","");
+$lap=Siswa($_SESSION['username'])['username_siswa'];
+$ambil=AmbilDataAll("lap","WHERE  username_siswa='$lap'");
 foreach($ambil as $key)
 {
     $no++;
