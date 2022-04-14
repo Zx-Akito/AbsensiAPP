@@ -1,5 +1,23 @@
 <?php
 
+$ambil=AmbilDataAll("laporan","");
+foreach($ambil as $key)
+{
+    $no++;
+    $data.="
+    <tbody>
+        <tr>
+            <td>$no</td>
+            <td>{$key['nama']}</td>
+            <td>{$key['kelas']}</td>
+            <td>{$key['jurusan']}</td>
+            <td>{$key['absensi_masuk']}</td>
+            <td>{$key['absensi_pulang']}</td>
+        </tr>
+    </tbody>
+    ";
+}
+
 $active3="active-link";
 $template="dashboard";
 $title="Laporan";
@@ -28,16 +46,7 @@ $konten="
                     <th>Absen Keluar</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Ucup</td>
-                    <td>XII</td>
-                    <td>RPL</td>
-                    <td>2022/04/04 07:10am</td>
-                    <td>2022/04/04 12:10am</td>
-                </tr>
-            </tbody>
+            $data
             </table>
         </div>
     </div>
