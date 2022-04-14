@@ -1,6 +1,6 @@
 <?php
 
-$ambil=AmbilDataAll("laporan","");
+$ambil=AmbilDataAll("lap","");
 foreach($ambil as $key)
 {
     $no++;
